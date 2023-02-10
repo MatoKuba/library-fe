@@ -11,7 +11,7 @@ export class AppComponent {
   updateCheckboxes(value: string) {
     this.decimalNumber = parseInt(value);
     for (let i = 0; i < 8; i++) {
-      this.binaryArray[i] = (this.decimalNumber & (1 << i)) >> i;
+      this.binaryArray[7-i] = (this.decimalNumber & (1 << i)) >> i;
     }
   }
 
@@ -19,7 +19,7 @@ export class AppComponent {
     this.binaryArray[index] = this.binaryArray[index] === 1 ? 0 : 1;
     this.decimalNumber = 0;
     for (let i = 0; i < 8; i++) {
-      this.decimalNumber += this.binaryArray[i] << i;
+      this.decimalNumber += this.binaryArray[7-i] << i;
     }
   }
 }
