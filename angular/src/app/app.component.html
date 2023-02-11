@@ -1,16 +1,29 @@
-
-
-<div>
-  <input #mn type="number" value="{{something}}"  (input)="toBin(mn.value)"/> <br>
-
-  <form #myForm='ngForm'>
-    <input [(ngModel)]="shown1" type="checkbox" (click)="toBin('128')"  name="checkBox1" class="form-control"/>
-    <input  [(ngModel)]="shown2" type="checkbox" (click)="toBin('64')"  name="checkBox2" class="form-control"/>
-    <input  [(ngModel)]="shown3" type="checkbox" (click)="toBin('32')"  name="checkBox3" class="form-control"/>
-    <input [(ngModel)]="shown4" type="checkbox" (click)="toBin('16')"  name="checkBox4" class="form-control"/>
-    <input [(ngModel)]="shown5" type="checkbox" (click)="toBin('8')"  name="checkBox5" class="form-control"/>
-    <input  [(ngModel)]="shown6" type="checkbox" (click)="toBin('4')"  name="checkBox6" class="form-control"/>
-    <input  [(ngModel)]="shown7" type="checkbox" (click)="toBin('2')"  name="checkBox7" class="form-control"/>
-    <input  [(ngModel)]="shown8" type="checkbox" (click)="toBin('1')"  name="checkBox8" class="form-control"/>
-  </form>
+<div class="container">
+  <input [(ngModel)]="decimalValue" (ngModelChange)="updateBinary()" type="number">
+  <div class="checkbox-container">
+    <label class="checkbox-label">
+      <input type="checkbox" [(ngModel)]="binaryArray[0]" (ngModelChange)="updateDecimal()">
+    </label>
+    <label class="checkbox-label">
+      <input type="checkbox" [(ngModel)]="binaryArray[1]" (ngModelChange)="updateDecimal()">
+    </label>
+    <label class="checkbox-label">
+      <input type="checkbox" [(ngModel)]="binaryArray[2]" (ngModelChange)="updateDecimal()">
+    </label>
+    <label class="checkbox-label">
+      <input type="checkbox" [(ngModel)]="binaryArray[3]" (ngModelChange)="updateDecimal()">
+    </label>
+    <label class="checkbox-label">
+      <input type="checkbox" [(ngModel)]="binaryArray[4]" (ngModelChange)="updateDecimal()">
+    </label>
+    <label class="checkbox-label">
+      <input type="checkbox" [(ngModel)]="binaryArray[5]" (ngModelChange)="updateDecimal()">
+    </label>
+    <label class="checkbox-label">
+      <input type="checkbox" [(ngModel)]="binaryArray[6]" (ngModelChange)="updateDecimal()">
+    </label>
+    <label class="checkbox-label">
+      <input type="checkbox" [(ngModel)]="binaryArray[7]" (ngModelChange)="updateDecimal()">
+    </label>
+  </div>
 </div>
