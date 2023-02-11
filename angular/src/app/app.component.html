@@ -1,14 +1,16 @@
 
 
 <div>
-  <input #pg type="number" value="{{input}}"  (input)="toBin(pg.value)"/> <br>
+  <input #mn type="number" value="{{something}}"  (input)="toBin(mn.value)"/> <br>
 
-  <input type="checkbox" (click)="toDecimal(8)" id="8"/>
-  <input type="checkbox" (click)="toDecimal(7)" id="7"/>
-  <input type="checkbox" (click)="toDecimal(6)" id="6"/>
-  <input type="checkbox" (click)="toDecimal(5)" id="5"/>
-  <input type="checkbox" (click)="toDecimal(4)" id="4"/>
-  <input type="checkbox" (click)="toDecimal(3)" id="3"/>
-  <input type="checkbox" (click)="toDecimal(2)" id="2"/>
-  <input type="checkbox" (click)="toDecimal(1)" id="1"/>
+  <form #myForm='ngForm'>
+    <input [(ngModel)]="shown1" type="checkbox" (click)="toDecimal(8)"  name="checkBox1" class="form-control"/>
+    <input  [(ngModel)]="shown2" type="checkbox" (click)="toDecimal(7)"  name="checkBox2" class="form-control"/>
+    <input  [(ngModel)]="shown3" type="checkbox" (click)="toDecimal(6)"  name="checkBox3" class="form-control"/>
+    <input [(ngModel)]="shown4" type="checkbox" (click)="toDecimal(5)"  name="checkBox4" class="form-control"/>
+    <input [(ngModel)]="shown5" type="checkbox" (click)="toDecimal(4)"  name="checkBox5" class="form-control"/>
+    <input  [(ngModel)]="shown6" type="checkbox" (click)="toDecimal(3)"  name="checkBox6" class="form-control"/>
+    <input  [(ngModel)]="shown7" type="checkbox" (click)="toDecimal(2)"  name="checkBox7" class="form-control"/>
+    <input  [(ngModel)]="shown8" type="checkbox" (click)="toDecimal(1)"  name="checkBox8" class="form-control"/>
+  </form>
 </div>
