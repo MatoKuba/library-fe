@@ -1,105 +1,61 @@
 import { Component } from '@angular/core';
-
-interface User {
-  id: string;
-  name: string;
-  contact: string;
-}
-
-interface Book {
-  id: string;
-  name: string;
-  author: string;
-  available: boolean;
-}
-
-interface Borrowing {
-  id: string;
-  bookId: string;
-  userId: string;
-}
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  template: `
+    <form [formGroup]="borrowingForm" (ngSubmit)="onSubmit()">
+      <div formGroupName="borrowing">
+        <h3>Select a user:</h3>
+        <div>
+          <button type="button" (click)="selectUser('user1')">User 1</button>
+          <button type="button" (click)="selectUser('user2')">User 2</button>
+          <button type="button" (click)="selectUser('user3')">User 3</button>
+        </div>
+        <h3>Select a book:</h3>
+        <div>
+          <button type="button" (click)="selectBook('book1')">Book 1</button>
+          <button type="button" (click)="selectBook('book2')">Book 2</button>
+          <button type="button" (click)="selectBook('book3')">Book 3</button>
+        </div>
+      </div>
+      <button type="submit" [disabled]="!borrowingForm.valid">Borrow</button>
+    </form>
+
+    <ul>
+      <li *ngFor="let borrowing of borrowingList">{{ borrowing.id }} - {{ borrowing.userId }} - {{ borrowing.bookId }}</li>
+    </ul>
+  `,
 })
 export class AppComponent {
-  showUser = false;
-  showBook = false;
-  showBorrowing = false;
+  borrowingForm: FormGroup;
+  borrowingList: any[] = [];
+  counter: number = 1;
 
-  userId = '';
-  userName = '';
-  userContact = '';
-  users: User[] = [];
-
-  bookId = '';
-  bookName = '';
-  bookAuthor = '';
-  bookAvailable = true;
-  books: Book[] = [];
-
-  borrowingId = '';
-  borrowingBook = '';
-  borrowingUser = '';
-  borrowings: Borrowing[] = [];
-
-  showUsers(): void {
-    this.showUser = true;
-    this.showBook = false;
-    this.showBorrowing = false;
+  constructor(private fb: FormBuilder) {
+    this.borrowingForm = this.fb.group({
+      borrowing: this.fb.group({
+        userId: ['', Validators.required],
+        bookId: ['', Validators.required],
+      }),
+    });
   }
 
-  showBooks(): void {
-    this.showUser = false;
-    this.showBook = true;
-    this.showBorrowing = false;
+  selectUser(userId: string) {
+    this.borrowingForm.get('borrowing.userId')?.setValue(userId);
   }
 
-  showBorrowings(): void {
-    this.showUser = false;
-    this.showBook = false;
-    this.showBorrowing = true;
+  selectBook(bookId: string) {
+    this.borrowingForm.get('borrowing.bookId')?.setValue(bookId);
   }
 
-  addUser(): void {
-    const user: User = {
-      id: this.userId,
-      name: this.userName,
-      contact: this.userContact
+  onSubmit() {
+    const borrowing = {
+      id: this.counter++,
+      userId: this.borrowingForm.value.borrowing.userId,
+      bookId: this.borrowingForm.value.borrowing.bookId,
     };
-    this.users.push(user);
-
-    this.userId = '';
-    this.userName = '';
-    this.userContact = '';
-  }
-
-  addBook(): void {
-    const book: Book = {
-      id: this.bookId,
-      name: this.bookName,
-      author: this.bookAuthor,
-      available: this.bookAvailable
-    };
-    this.books.push(book);
-
-    this.bookId = '';
-    this.bookName = '';
-    this.bookAuthor = '';
-    this.bookAvailable = true;
-  }
-
-  addBorrowing(): void {
-    const borrowing: Borrowing = {
-      id: this.borrowingId,
-      bookId: this.borrowingBook,
-      userId: this.borrowingUser
-    };
-    this.borrowings.push(borrowing);
-
-    this.borrowingId = '';
-    this.borrowingBook = '';
-    this.borrowingUser = '';
+    this.borrowingList.push(borrowing);
+    this.borrowingForm.reset();
   }
 }
