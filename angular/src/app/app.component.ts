@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div class="container">
-      <h1>Welcome to my library app!</h1>
+      <h1>Domaca uloha2</h1>
       <app-my-tabs></app-my-tabs>
     </div>
   `,

@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { UsersComponent } from './my-tabs/users/users.component';
 import { BooksComponent } from './my-tabs/books/books.component';
-import { BorowingsComponent } from './my-tabs/borowings/borowings.component';
+import {BorrowingsComponent} from './my-tabs/borrowings/borowings.component';
 import {MatTabsModule} from "@angular/material/tabs";
 import {ReactiveFormsModule} from "@angular/forms";
 
@@ -22,7 +22,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     MyTabsComponent,
     UsersComponent,
     BooksComponent,
-    BorowingsComponent
+    BorrowingsComponent
   ],
   imports: [
     BrowserModule,
