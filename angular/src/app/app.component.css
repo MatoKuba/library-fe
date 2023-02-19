@@ -1,3 +1,16 @@
-.active{
-  color: red;
+.submit{
+  margin-top: 20px;
+  width: 5rem;
+}
+
+button.selected {
+  background-color: #0b1b3d;
+  color: white;
+  border-radius: 5px;
+}
+
+button {
+  display: block;
+  margin-bottom: 10px;
+  width: 10rem;
 }

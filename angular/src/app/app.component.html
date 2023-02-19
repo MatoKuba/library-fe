@@ -1,3 +1,25 @@
-<button class="btn" [class.active]="isActive" (click)="toggleClass()">Click me</button>
+<form [formGroup]="borrowingForm" (ngSubmit)="onSubmit()">
+  <div formGroupName="borrowing" style="display: flex;">
+    <div style="flex: 1;">
+      <h3>Select a user:</h3>
+      <div>
+        <button type="button" [ngClass]="{'selected': selectedUser === 'Bob'}" (click)="selectUser('Bob')">Bob</button>
+        <button type="button" [ngClass]="{'selected': selectedUser === 'Alice'}" (click)="selectUser('Alice')">Alice</button>
+        <button type="button" [ngClass]="{'selected': selectedUser === 'Jeina'}" (click)="selectUser('Jeina')">Jeina</button>
+      </div>
+    </div>
+    <div style="flex: 1;">
+      <h3>Select a book:</h3>
+      <div>
+        <button type="button" [ngClass]="{'selected': selectedBook === '1984'}" (click)="selectBook('1984')">1984</button>
+        <button type="button" [ngClass]="{'selected': selectedBook === 'To kill a mockingbird'}" (click)="selectBook('To kill a mockingbird')">To kill a mockingbird</button>
+        <button type="button" [ngClass]="{'selected': selectedBook === 'The Great Gatsby'}" (click)="selectBook('The Great Gatsby')">The Great Gatsby</button>
+      </div>
+    </div>
+  </div>
+  <button class="submit" type="submit" [disabled]="!borrowingForm.valid">Borrow</button>
+</form>
 
-
+<ul>
+  <li *ngFor="let borrowing of borrowingList">{{ borrowing.id }} - {{ borrowing.userId }} - {{ borrowing.bookId }}</li>
+</ul>
