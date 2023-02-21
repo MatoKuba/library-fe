@@ -6,7 +6,7 @@ import {Borrowing} from "./model/borrowings.model";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   showUser = false;
@@ -14,6 +14,8 @@ export class AppComponent {
   showBorrowing = false;
 
   persons: Array<User> = [];
+  books: Array<Book> = [];
+  borrowings: Array<Borrowing> = [];
 
   showUsers(): void {
     this.showUser = true;
