@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {User} from "../model/user.model";
-import {Book} from "../model/book.model";
 
 @Component({
   selector: 'app-user',
