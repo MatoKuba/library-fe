@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import {UserComponent} from "./user/user.component";
-import {RouterModule, Routes} from "@angular/router";
-import {BookComponent} from "./book/book.component";
-import {BorrowingComponent} from "./borrowing/borrowing.component";
+import {BooksComponent} from "./books/books.component";
+import {GenreComponent} from "./genre/genre.component";
+import {BorrowingsComponent} from "./borrowings/borrowings.component";
 
 const routes: Routes = [
   {
@@ -10,12 +11,16 @@ const routes: Routes = [
     component: UserComponent
   },
   {
-    path: "book",
-    component: BookComponent
+    path: "books",
+    component: BooksComponent
   },
   {
-    path: "borrowing",
-    component: BorrowingComponent
+    path: "borrowings",
+    component: BorrowingsComponent
+  },
+  {
+    path: "genre",
+    component: GenreComponent
   }
 ]
 

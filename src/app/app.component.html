@@ -1,7 +1,16 @@
-<mat-toolbar color="primary">
-  <button mat-button class="mat-primary" routerLink="/user" routerLinkActive="active">User</button>
-  <button mat-button class="mat-primary" routerLink="/book" routerLinkActive="active">Book</button>
-  <button mat-button class="mat-primary" routerLink="/borrowing" routerLinkActive="active">Borrowing</button>
-</mat-toolbar>
+<div>
+  <button routerLink="/user">POUŽÍVATELIA</button>
+  <button routerLink="/books" (click)="changeMenu(menu.BOOKS)">KNIHY</button>
+  <button routerLink="/borrowings" (click)="changeMenu(menu.BORROWINGS)">VÝPOŽIČKY</button>
+</div>
+<ng-container *ngIf="actualMenu === menu.USERS">
+  <router-outlet></router-outlet>
+</ng-container>
 
-<router-outlet></router-outlet>
+<ng-container *ngIf="actualMenu === menu.BOOKS">
+  <router-outlet></router-outlet>
+</ng-container>
+
+<ng-container *ngIf="actualMenu === menu.BORROWINGS">
+  <router-outlet></router-outlet>
+</ng-container>
