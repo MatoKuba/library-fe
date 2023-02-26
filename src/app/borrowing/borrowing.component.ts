@@ -23,4 +23,10 @@ export class BorrowingComponent {
     this.borrowingBook = '';
     this.borrowingUser = '';
   }
+  deleteBorrowing(id: string): void {
+    const index = this.borrowings.findIndex(borrowing => borrowing.id === id);
+    if (index !== -1) {
+      this.borrowings.splice(index, 1);
+    }
+  }
 }
