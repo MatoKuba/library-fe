@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {User} from "../model/user.model";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-user',
@@ -8,30 +7,20 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
+  userId = "";
+  userName = '';
+  userContact = '';
+  users: User[] = [];
+  addUser(): void {
+    const user: User = {
+      id: this.userId,
+      name: this.userName,
+      contact: this.userContact
+    };
+    this.users.push(user);
 
-  form: FormGroup;
-  persons: Array<User> = [];
-
-  constructor() {
-    this.form = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      surname: new FormControl(null, [Validators.required,
-        Validators.minLength(3)]),
-    })
+    this.userId = '';
+    this.userName = '';
+    this.userContact = '';
   }
-
-  savePerson(): void {
-    this.persons.push(this.form.value);
-    this.form.reset();
-  }
-
-  editPerson(index: number):void {
-    this.form.setValue(this.persons[index]);
-    this.deletePerson(index);
-  }
-
-  deletePerson(index: number):void{
-    this.persons.splice(index,1);
-  }
-
 }
