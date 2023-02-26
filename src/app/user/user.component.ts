@@ -23,4 +23,10 @@ export class UserComponent {
     this.userName = '';
     this.userContact = '';
   }
+  deleteUser(id: string): void {
+    const index = this.users.findIndex(user => user.id === id);
+    if (index !== -1) {
+      this.users.splice(index, 1);
+    }
+  }
 }
