@@ -1,0 +1,41 @@
+<div class="col">
+  <h2>BORROWINGS</h2>
+  <form (ngSubmit)="addBorrowing()">
+    <div class="form-group">
+      <label for="borrowingId">ID</label>
+      <input type="text" class="form-control" id="borrowingId" name="borrowingId" required [(ngModel)]="borrowingId">
+    </div>
+    <div class="form-group">
+      <label for="borrowingUserId">USER ID</label>
+      <input type="text" class="form-control" id="borrowingUserId" name="borrowingUserId" required [(ngModel)]="borrowingUser">
+    </div>
+    <div class="form-group">
+      <label for="borrowingBookId">BOOK ID</label>
+      <input type="text" class="form-control" id="borrowingBookId" name="borrowingBookId" required [(ngModel)]="borrowingBook">
+    </div>
+    <button type="submit" class="btn btn-primary">ADD BORROWING</button>
+  </form>
+  <div class="mt-5">
+    <h4>BORROWING LIST</h4>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>USER ID</th>
+        <th>BOOK ID</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let borrowing of borrowings">
+        <td>{{ borrowing.id }}</td>
+        <td>{{ borrowing.userId }}</td>
+        <td>{{ borrowing.bookId }}</td>
+        <td>
+          <button (click)="deleteBorrowing(borrowing.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

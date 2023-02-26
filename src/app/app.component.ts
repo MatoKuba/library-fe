@@ -1,14 +1,7 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import {User} from "./model/user.model";
 import {Book} from "./model/book.model";
 import {Borrowing} from "./model/borrowings.model";
-
-
-export enum Menu {
-  BOOKS = 'BOOKS',
-  USERS = 'USERS',
-  BORROWINGS = 'BORROWINGS'
-}
 
 @Component({
   selector: 'app-root',
@@ -17,14 +10,9 @@ export enum Menu {
 })
 export class AppComponent {
 
-
-  menu = Menu;
-  actualMenu = Menu.USERS;
-
-
+  persons: Array<User> = [];
+  books: Array<Book> = [];
+  borrowings: Array<Borrowing> = [];
 
 
-  changeMenu(menuItem: Menu): void {
-    this.actualMenu = menuItem;
-  }
 }
