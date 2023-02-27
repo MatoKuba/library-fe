@@ -1,6 +1,6 @@
 <div class="col">
   <h2>BORROWINGS</h2>
-  <form (ngSubmit)="addBorrowing()">
+  <form (ngSubmit)="addOrUpdateBorrowing()">
     <div class="form-group">
       <label for="borrowingId">ID</label>
       <input type="text" class="form-control" id="borrowingId" name="borrowingId" required [(ngModel)]="borrowingId">
@@ -13,7 +13,7 @@
       <label for="borrowingBookId">BOOK ID</label>
       <input type="text" class="form-control" id="borrowingBookId" name="borrowingBookId" required [(ngModel)]="borrowingBook">
     </div>
-    <button type="submit" class="btn btn-primary">ADD BORROWING</button>
+    <button type="submit" class="btn btn-primary">{{ editBorrowing ? 'Update' : 'Add' }} BORROWING</button>
   </form>
   <div class="mt-5">
     <h4>BORROWING LIST</h4>
@@ -33,6 +33,7 @@
         <td>{{ borrowing.bookId }}</td>
         <td>
           <button (click)="deleteBorrowing(borrowing.id)" class="btn btn-danger">Delete</button>
+          <button (click)="setEditBorrowing(borrowing)" class="btn btn-secondary ml-2">Edit</button>
         </td>
       </tr>
       </tbody>
