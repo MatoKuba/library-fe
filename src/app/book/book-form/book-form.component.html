@@ -21,20 +21,3 @@
 
   <button type="button" [disabled]="form.invalid" (click)="saveBook()">Uložiť</button>
 </form>
-
-<table *ngIf="books.length">
-  <tr>
-    <th>Meno</th>
-    <th>Autor</th>
-    <th>Dostupnosť</th>
-  </tr>
-  <tr *ngFor="let book of books; let i = index">
-    <td>{{ book.name }}</td>
-    <td>{{ book.author }}</td>
-    <td>{{ book.available}}</td>
-    <td>
-      <button (click)="editBook(i)">Upravit</button>
-      <button (click)="deleteBook(i)">Zmazat</button>
-    </td>
-  </tr>
-</table>

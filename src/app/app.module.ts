@@ -6,15 +6,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
-import { BooksComponent } from './book/book.component';
 import { BorrowingComponent } from './borrowing/borrowing.component';
+import { BookFormComponent } from './book/book-form/book-form.component';
+import { BookListComponent } from './book/book-list/book-list.component';
+import { BookPageComponent } from './book/book-page/book-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    BooksComponent,
-    BorrowingComponent
+    BorrowingComponent,
+    BookFormComponent,
+    BookListComponent,
+    BookPageComponent
   ],
   imports: [
     BrowserModule,
