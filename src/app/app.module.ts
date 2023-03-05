@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { BooksComponent } from './book/book.component';
 import { BorrowingComponent } from './borrowing/borrowing.component';
+import { BorrowingListComponent } from './borrowing/borrowing-list/borrowing-list.component';
+import { BorrowingFormComponent } from './borrowing/borrowing-form/borrowing-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     BooksComponent,
-    BorrowingComponent
+    BorrowingComponent,
+    BorrowingListComponent,
+    BorrowingFormComponent
   ],
   imports: [
     BrowserModule,
