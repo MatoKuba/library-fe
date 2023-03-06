@@ -51,7 +51,7 @@ export class UserFormComponent {
     return {
       id: id !== undefined ? id : Date.now(),
       name: this.form.controls.name.value,
-      surname: this.form.controls.surname.value};
+      surname: this.form.controls.surnameg.value};
   }
 
 }
