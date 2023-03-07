@@ -4,9 +4,18 @@ import {Borrowing} from "../../model/borrowings.model";
 @Component({
   selector: 'app-borrowing-list',
   templateUrl: './borrowing-list.component.html',
+  styleUrls: ['./borrowing-list.component.html']
 })
 export class BorrowingListComponent {
-  @Input() borrowings: Borrowing[] = [];
-  @Output() deleteBorrowing = new EventEmitter<string>();
-  @Output() setEditBorrowing = new EventEmitter<Borrowing>();
+  @Input() borrowings: Array<Borrowing> = [];
+  @Output() borrowingToUpdate = new EventEmitter<number>();
+  @Output() borrowingToDelete = new EventEmitter<number>();
+
+  editBorrowing(borrowingId: number):void {
+    this.borrowingToUpdate.emit(borrowingId);
+  }
+
+  deleteBorrowing(borrowingId: number):void{
+    this.borrowingToDelete.emit(borrowingId);
+  }
 }

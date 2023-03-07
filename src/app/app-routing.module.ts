@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import {UserComponent} from "./user/user.component";
 import {RouterModule, Routes} from "@angular/router";
 import {BooksComponent} from "./book/book.component";
-import {BorrowingComponent} from "./borrowing/borrowing.component";
+import {BorrowingPageComponent} from "./borrowing/borrowing-page/borrowing-page.component";
 
 const routes: Routes = [
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: "borrowing",
-    component: BorrowingComponent
+    component: BorrowingPageComponent
   }
 ]
 

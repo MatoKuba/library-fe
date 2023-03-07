@@ -1,24 +1,19 @@
-<div class="mt-5">
-  <h4>BORROWING LIST</h4>
-  <table class="table">
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>USER ID</th>
-      <th>BOOK ID</th>
-      <th>Action
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let borrowing of borrowings">
-      <td>{{ borrowing.id }}</td>
-      <td>{{ borrowing.userId }}</td>
-      <td>{{ borrowing.bookId }}</td>
-      <td>
-        <button (click)="deleteBorrowing.emit(borrowing.id)" class="btn btn-danger">Delete</button>
-        <button (click)="setEditBorrowing.emit(borrowing)" class="btn btn-secondary ml-2">Edit</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<table *ngIf="borrowings.length">
+  <tr>
+    <th>ID</th>
+    <th>USER ID</th>
+    <th>BOOK ID</th>
+    <th>Action
+  </tr>
+  <tr *ngFor="let borrowing of borrowings">
+    <td>{{ borrowing.id }}</td>
+    <td>{{ borrowing.userId }}</td>
+    <td>{{ borrowing.bookId }}</td>
+    <td>
+      <button (click)="deleteBorrowing(borrowing.id)" class="btn btn-danger">Delete</button>
+      <button (click)="editBorrowing(borrowing.id)" class="btn btn-secondary ml-2">Edit</button>
+    </td>
+  </tr>
+</table>
+
+

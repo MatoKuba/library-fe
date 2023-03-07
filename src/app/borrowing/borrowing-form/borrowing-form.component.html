@@ -1,18 +1,18 @@
 <div class="col">
   <h2>BORROWINGS</h2>
-  <form (ngSubmit)="addOrUpdateBorrowing.emit()">
+  <form [formGroup]="formGroup" (ngSubmit)="submit()">
     <div class="form-group">
       <label for="borrowingId">ID</label>
-      <input type="text" class="form-control" id="borrowingId" name="borrowingId" required [(ngModel)]="borrowingId">
+      <input formControlName="borrowingId" type="text" class="form-control" id="borrowingId" name="borrowingId" required >
     </div>
     <div class="form-group">
       <label for="borrowingUserId">USER ID</label>
-      <input type="text" class="form-control" id="borrowingUserId" name="borrowingUserId" required [(ngModel)]="borrowingUser">
+      <input formControlName="borrowingUserId" type="text" class="form-control" id="borrowingUserId" name="borrowingUserId" required>
     </div>
     <div class="form-group">
       <label for="borrowingBookId">BOOK ID</label>
-      <input type="text" class="form-control" id="borrowingBookId" name="borrowingBookId" required [(ngModel)]="borrowingBook">
+      <input formControlName="borrowingBookId" type="text" class="form-control" id="borrowingBookId" name="borrowingBookId" required>
     </div>
-    <button type="submit" class="btn btn-primary">{{ editBorrowing ? 'Update' : 'Add' }} BORROWING</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
