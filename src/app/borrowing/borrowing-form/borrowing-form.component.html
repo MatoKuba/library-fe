@@ -1,18 +1,15 @@
-<div class="col">
+
   <h2>BORROWINGS</h2>
-  <form [formGroup]="formGroup" (ngSubmit)="submit()">
-    <div class="form-group">
-      <label for="borrowingId">ID</label>
-      <input formControlName="borrowingId" type="text" class="form-control" id="borrowingId" name="borrowingId" required >
-    </div>
-    <div class="form-group">
-      <label for="borrowingUserId">USER ID</label>
-      <input formControlName="borrowingUserId" type="text" class="form-control" id="borrowingUserId" name="borrowingUserId" required>
-    </div>
-    <div class="form-group">
-      <label for="borrowingBookId">BOOK ID</label>
-      <input formControlName="borrowingBookId" type="text" class="form-control" id="borrowingBookId" name="borrowingBookId" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+  <form [formGroup]="form">
+      <label>USER ID:
+      <input formControlName="userId" type="text">
+      </label>
+
+
+      <label>BOOK ID:
+      <input formControlName="bookId" type="text">
+      </label>
+
+    <button type="button" (click)="submit()">Submit</button>
   </form>
-</div>
+
