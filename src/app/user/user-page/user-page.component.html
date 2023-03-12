@@ -1,7 +1,10 @@
 <h3>POUŽÍVATELIA</h3>
 
 <app-user-form
-  [userData]="person"
+
+  [personData]="person"
+
+
   (formCreate)="createPerson($event)"
   (formUpdate)="updatePerson($event)">
 </app-user-form>

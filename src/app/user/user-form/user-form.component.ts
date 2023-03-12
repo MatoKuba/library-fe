@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Output, Input} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {User} from "../../model/user.model";
+
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {User} from '../../common/model/user.model';
 
 
 @Component({
@@ -10,48 +11,43 @@ import {User} from "../../model/user.model";
 })
 export class UserFormComponent {
 
-  form: FormGroup;
+
 
   @Input()
-  set userData(user: User | undefined) {
-    if (user) {
-      this.form.setValue(user);
+  set personData(person: User | undefined) {
+    if (person) {
+      this.form.setValue(person);
     }
   }
 
+  @Output()
+  formCreate = new EventEmitter<User>();
 
   @Output()
   formUpdate = new EventEmitter<User>();
 
-  @Output() formCreate = new EventEmitter<User>();
 
+  form: FormGroup;
 
-  saveUser(): void {
-    if (this.form.valid) {
-      if (this.form.controls.id.value) {
-        this.formUpdate.emit(
-          this.prepareUser(this.form.controls.id.value));
-      } else {
-        this.formCreate.emit(this.prepareUser());
-      }
-      this.form.reset();
-    }
-  }
   constructor() {
     this.form = new FormGroup({
       id: new FormControl(null),
-      name: new FormControl(null, Validators.required),
-      author: new FormControl(null, [Validators.required,
-        Validators.minLength(3)]),
-      available: new FormControl(null)
+      firstName: new FormControl(null, Validators.required),
+      lastName: new FormControl(null, [Validators.required, Validators.minLength(3)])
     })
   }
+
+  savePerson(): void {
+    if (this.form.valid) {
+      if (this.form.controls.id.value) {
+        this.formUpdate.emit(this.prepareUser(this.form.controls.id.value));
+
+
 
   private prepareUser(id?: number): User {
     return {
       id: id !== undefined ? id : Date.now(),
-      name: this.form.controls.name.value,
-      surname: this.form.controls.surnameg.value};
+      firstName: this.form.controls.firstName.value,
+      lastName: this.form.controls.lastName.value,
+    };
   }
-
-}
