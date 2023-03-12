@@ -5,16 +5,23 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
+import { UserPageComponent } from './user/user-page/user-page.component';
+import { UserFormComponent } from './user/user-form/user-form.component';
+import { UserListComponent } from './user/user-list/user-list.component';
 import { BorrowingComponent } from './borrowing/borrowing.component';
 import { BookFormComponent } from './book/book-form/book-form.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { BookPageComponent } from './book/book-page/book-page.component';
+import {HttpClientModule} from '@angular/common/http';
+import {UserService} from './common/service/user.service';
+import {BookService} from './common/service/book.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
+    UserPageComponent,
+    UserFormComponent,
+    UserListComponent,
     BorrowingComponent,
     BookFormComponent,
     BookListComponent,
@@ -26,9 +33,13 @@ import { BookPageComponent } from './book/book-page/book-page.component';
     ReactiveFormsModule,
     MatToolbarModule,
     MatButtonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    UserService,
+    BookService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
