@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {Book} from "../../model/book.model";
+import {Component} from '@angular/core';
+import {Book} from "../../common/model/book.model";
+import {BookService} from '../../common/service/book.service';
 
 @Component({
   selector: 'app-book-page',
@@ -10,34 +11,46 @@ export class BookPageComponent {
   books: Array<Book> = [];
   book?: Book;
 
-  @Output()
-  bookToUpdate = new EventEmitter<number>();
+  constructor(private service: BookService) {
+    this.getBooks();
+  }
+
+  getBooks(): void {
+    this.service.getBooks().subscribe((books: Book[]) => {
+      this.books = books;
+    })
+  }
 
 
   createBook(book: Book): void {
-    this.books.push(book);
-    console.log('BOOKS:', this.books);
+    this.service.createBook(book)
+      .subscribe(() => {
+        console.log('Kniha bola uspesne ulozena.')
+        this.getBooks();
+      })
   }
 
   updateBook(book: Book): void {
-    const index = this.books.findIndex(
-      book => book.id === book.id);
-    if (index !== -1) {
-      this.books[index] = book;
-      this.book = undefined;
-    }
+    this.service.updateBook(book)
+      .subscribe(() => {
+        console.log('Kniha bola uspesne upravena.')
+        this.getBooks();
+      })
   }
 
 
   selectBookToUpdate(bookId: number): void {
-    this.book = this.books.find(book =>
-        book.id === bookId);
+    this.service.getBook(bookId)
+      .subscribe((book: Book) => {
+        this.book = book;
+      })
   }
 
   deleteBook(bookId: number): void {
-    const index = this.books.findIndex(book =>
-      book.id === bookId);
-    if (index !== -1) { this.books.splice(index, 1); }
+    this.service.deleteBook(bookId).subscribe(() => {
+      console.log('Kniha bola uspesne zmazana.')
+      this.getBooks();
+    })
   }
 
 }

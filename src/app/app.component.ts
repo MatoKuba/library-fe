@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import {User} from "./model/user.model";
-import {Book} from "./model/book.model";
-import {Borrowing} from "./model/borrowings.model";
 
 @Component({
   selector: 'app-root',
@@ -10,9 +7,6 @@ import {Borrowing} from "./model/borrowings.model";
 })
 export class AppComponent {
 
-  persons: Array<User> = [];
-  books: Array<Book> = [];
-  borrowings: Array<Borrowing> = [];
 
 
 }
