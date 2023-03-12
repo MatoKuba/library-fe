@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import { Borrowing } from '../../model/borrowings.model';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Borrowing} from "../../common/model/borrowing.model";
+import { BorrowingService} from "../../common/service/borrowing.service";
 
 @Component({
   selector: 'app-borrowing-page',
@@ -13,30 +14,45 @@ export class BorrowingPageComponent {
   @Output()
   borrowingToUpdate = new EventEmitter<number>();
 
+  constructor(private borrowingService: BorrowingService) {
+    this.getBorrowings();
+  }
+
+  getBorrowings(): void {
+    this.borrowingService.getBorrowings().subscribe((borrowings: Borrowing[]) => {
+      this.borrowings = borrowings;
+    });
+  }
 
   createBorrowing(borrowing: Borrowing): void {
-    this.borrowings.push(borrowing);
-    console.log('BORROWINGS:', this.borrowings);
+    this.borrowingService.createBorrowing(borrowing)
+      .subscribe(() => {
+        console.log('Pôžička bola úspešne vytvorená.');
+        this.getBorrowings();
+      });
   }
 
   updateBorrowing(borrowing: Borrowing): void {
-    const index = this.borrowings.findIndex(
-      borrowing => borrowing.id === borrowing.id);
-    if (index !== -1) {
-      this.borrowings[index] = borrowing;
-      this.borrowing = undefined;
-    }
+    this.borrowingService.updateBorrowing(borrowing)
+      .subscribe(() => {
+        console.log('Pôžička bola úspešne upravená.');
+        this.getBorrowings();
+      });
+    this.borrowing = undefined;
   }
 
-
   selectBorrowingToUpdate(borrowingId: number): void {
-    this.borrowing = this.borrowings.find(borrowing =>
-      borrowing.id === borrowingId);
+    this.borrowingService.getBorrowing(borrowingId)
+      .subscribe((borrowing: Borrowing) => {
+        this.borrowing = borrowing;
+        this.borrowingToUpdate.emit(borrowing.id);
+      });
   }
 
   deleteBorrowing(borrowingId: number): void {
-    const index = this.borrowings.findIndex(borrowing =>
-      borrowing.id === borrowingId);
-    if (index !== -1) { this.borrowings.splice(index, 1); }
+    this.borrowingService.deleteBorrowing(borrowingId).subscribe(() => {
+      console.log('Pôžička bola úspešne zmazaná.');
+      this.getBorrowings();
+    });
   }
 }
