@@ -13,6 +13,7 @@ export class UserPageComponent {
 
   person?: User;
 
+
   constructor(private service: UserService) {
     this.getPersons();
   }

@@ -1,6 +1,8 @@
+
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../common/model/user.model';
+
 
 @Component({
   selector: 'app-user-form',
@@ -8,6 +10,7 @@ import {User} from '../../common/model/user.model';
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent {
+
 
 
   @Input()
@@ -23,6 +26,7 @@ export class UserFormComponent {
   @Output()
   formUpdate = new EventEmitter<User>();
 
+
   form: FormGroup;
 
   constructor() {
@@ -37,12 +41,8 @@ export class UserFormComponent {
     if (this.form.valid) {
       if (this.form.controls.id.value) {
         this.formUpdate.emit(this.prepareUser(this.form.controls.id.value));
-      } else {
-        this.formCreate.emit(this.prepareUser());
-      }
-      this.form.reset();
-    }
-  }
+
+
 
   private prepareUser(id?: number): User {
     return {
@@ -51,4 +51,3 @@ export class UserFormComponent {
       lastName: this.form.controls.lastName.value,
     };
   }
-}
