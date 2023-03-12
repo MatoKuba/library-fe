@@ -8,13 +8,16 @@ import { AppComponent } from './app.component';
 import { UserPageComponent } from './user/user-page/user-page.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserListComponent } from './user/user-list/user-list.component';
-import { BorrowingComponent } from './borrowing/borrowing.component';
 import { BookFormComponent } from './book/book-form/book-form.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { BookPageComponent } from './book/book-page/book-page.component';
 import {HttpClientModule} from '@angular/common/http';
 import {UserService} from './common/service/user.service';
 import {BookService} from './common/service/book.service';
+import {BorrowingPageComponent} from "./borrowing/borrowing-page/borrowing-page.component";
+import {BorrowingFormComponent} from "./borrowing/borrowing-form/borrowing-form.component";
+import {BorrowingListComponent} from "./borrowing/borrowing-list/borrowing-list.component";
+import {BorrowingService} from "./common/service/borrowing.service";
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import {BookService} from './common/service/book.service';
     UserPageComponent,
     UserFormComponent,
     UserListComponent,
-    BorrowingComponent,
+    BorrowingPageComponent,
+    BorrowingFormComponent,
+    BorrowingListComponent,
     BookFormComponent,
     BookListComponent,
     BookPageComponent
@@ -38,7 +43,8 @@ import {BookService} from './common/service/book.service';
   ],
   providers: [
     UserService,
-    BookService
+    BookService,
+    BorrowingService
   ],
   bootstrap: [AppComponent]
 })

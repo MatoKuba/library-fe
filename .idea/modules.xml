@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../danenka/.idea/danenka.iml" filepath="$PROJECT_DIR$/../danenka/.idea/danenka.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/library-fe.iml" filepath="$PROJECT_DIR$/.idea/library-fe.iml" />
     </modules>
   </component>

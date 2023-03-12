@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
-import {Borrowing} from "../../model/borrowings.model";
+import {Borrowing} from "../../common/model/borrowing.model";
 import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
@@ -40,7 +40,9 @@ export class BorrowingFormComponent {
     return {
       id: id !== undefined ? id : Date.now(),
       userId: this.form.controls.userId.value,
-      bookId: this.form.controls.bookId.value
+      bookId: this.form.controls.bookId.value,
+      borrowDate: this.form.controls.borrowDate.value,
+      returnDate: this.form.controls.returnDate.value
       };
   }
 
