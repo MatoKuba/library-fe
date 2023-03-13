@@ -6,8 +6,3 @@ export interface Book {
 }
 
 
-export enum Menu {
-  BOOKS = 'BOOKS',
-  USERS = 'USERS',
-  BORROWINGS = 'BORROWINGS'
-}

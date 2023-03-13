@@ -11,8 +11,6 @@ import {User} from '../../common/model/user.model';
 })
 export class UserFormComponent {
 
-
-
   @Input()
   set personData(person: User | undefined) {
     if (person) {
@@ -41,7 +39,9 @@ export class UserFormComponent {
     if (this.form.valid) {
       if (this.form.controls.id.value) {
         this.formUpdate.emit(this.prepareUser(this.form.controls.id.value));
-
+      }
+    }
+  }
 
 
   private prepareUser(id?: number): User {
@@ -51,3 +51,4 @@ export class UserFormComponent {
       lastName: this.form.controls.lastName.value,
     };
   }
+}

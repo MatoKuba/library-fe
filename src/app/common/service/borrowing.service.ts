@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Borrowing} from "../../model/borrowings.model";
+import {Borrowing} from "../model/borrowing.model";
 
 @Injectable()
 export class BorrowingService {
