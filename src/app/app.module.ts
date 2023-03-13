@@ -18,6 +18,8 @@ import {BorrowingPageComponent} from "./borrowing/borrowing-page/borrowing-page.
 import {BorrowingFormComponent} from "./borrowing/borrowing-form/borrowing-form.component";
 import {BorrowingListComponent} from "./borrowing/borrowing-list/borrowing-list.component";
 import {BorrowingService} from "./common/service/borrowing.service";
+import {AngularToastifyModule, ToastService} from 'angular-toastify';
+import { UserDetailPageComponent } from './user/user-detail-page/user-detail-page.component'
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import {BorrowingService} from "./common/service/borrowing.service";
     BorrowingListComponent,
     BookFormComponent,
     BookListComponent,
-    BookPageComponent
+    BookPageComponent,
+    UserDetailPageComponent
   ],
   imports: [
     BrowserModule,
@@ -39,12 +42,14 @@ import {BorrowingService} from "./common/service/borrowing.service";
     MatToolbarModule,
     MatButtonModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularToastifyModule
   ],
   providers: [
     UserService,
     BookService,
-    BorrowingService
+    BorrowingService,
+    ToastService
   ],
   bootstrap: [AppComponent]
 })
