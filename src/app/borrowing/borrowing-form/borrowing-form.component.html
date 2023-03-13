@@ -1,15 +1,36 @@
+<h2>BORROWINGS</h2>
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <div class="form-group">
+    <label for="userId">USER ID:</label>
+    <input id="userId" formControlName="userId" type="text" [ngClass]="{'invalid-input': form.controls.userId.invalid && submitted}" />
+    <p *ngIf="form.controls.userId.invalid && submitted" class="invalid-text">
+      User ID is required.
+    </p>
+  </div>
 
-  <h2>BORROWINGS</h2>
-  <form [formGroup]="form">
-      <label>USER ID:
-      <input formControlName="userId" type="text">
-      </label>
+  <div class="form-group">
+    <label for="bookId">BOOK ID:</label>
+    <input id="bookId" formControlName="bookId" type="text" [ngClass]="{'invalid-input': form.controls.bookId.invalid && submitted}" />
+    <p *ngIf="form.controls.bookId.invalid && submitted" class="invalid-text">
+      Book ID is required.
+    </p>
+  </div>
 
+  <div class="form-group">
+    <label for="borrowDate">BORROW DATE:</label>
+    <input id="borrowDate" formControlName="borrowDate" type="date" [ngClass]="{'invalid-input': form.controls.borrowDate.invalid && submitted}" />
+    <p *ngIf="form.controls.borrowDate.invalid && submitted" class="invalid-text">
+      Borrow date is required.
+    </p>
+  </div>
 
-      <label>BOOK ID:
-      <input formControlName="bookId" type="text">
-      </label>
+  <div class="form-group">
+    <label for="returnDate">RETURN DATE:</label>
+    <input id="returnDate" formControlName="returnDate" type="date" [ngClass]="{'invalid-input': form.controls.returnDate.invalid && submitted}" />
+    <p *ngIf="form.controls.returnDate.invalid && submitted" class="invalid-text">
+      Return date is required.
+    </p>
+  </div>
 
-    <button type="button" (click)="submit()">Submit</button>
-  </form>
-
+  <button type="submit">Submit</button>
+</form>

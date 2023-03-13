@@ -1,24 +1,25 @@
 <h3>KNIHY</h3>
-<form [formGroup]="form">
-  <label>Meno:
-    <input type="text" formControlName="name"/>
-  </label>
-  <p class="invalid-text" *ngIf="form.controls.name.invalid">Zadajte meno</p>
-  <label>Autor:
-    <input type="text" formControlName="author"/>
-  </label>
-  <p *ngIf="form.controls.author.errors?.minlength" class="invalid-text">
-    Minimalna dlzka je 3 znaky
-  </p>
-  <p *ngIf="form.controls.author.errors?.required" class="invalid-text">
-    Zadajte autora
-  </p>
-  <p>
-    <label>Dostupnosť
-      <input type="checkbox" formControlName="available"/>
-    </label>
-  </p>
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <div class="form-group">
+    <label for="name">Meno:</label>
+    <input id="name" formControlName="name" type="text" [ngClass]="{'invalid-input': form.controls.name.invalid && submitted}" />
+    <p *ngIf="form.controls.name.invalid && submitted" class="invalid-text">
+      Name is required.
+    </p>
+  </div>
 
-  <button type="button" [disabled]="form.invalid" (click)="saveBook()">Uložiť</button>
-  <button type="reset">Zrušiť</button>
+  <div class="form-group">
+    <label for="author">Autor:</label>
+    <input id="author" formControlName="author" type="text" [ngClass]="{'invalid-input': form.controls.author.invalid && submitted}" />
+    <p *ngIf="form.controls.author.invalid && submitted" class="invalid-text">
+      Author is required and must be at least 3 characters.
+    </p>
+  </div>
+
+  <div class="form-group">
+    <label for="available">Dostupnosť:</label>
+    <input id="available" formControlName="available" type="checkbox" />
+  </div>
+
+  <button type="submit">Uložiť</button>
 </form>

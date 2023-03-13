@@ -26,6 +26,7 @@ export class UserFormComponent {
 
 
   form: FormGroup;
+  submitted = false;
 
   constructor() {
     this.form = new FormGroup({
@@ -43,6 +44,17 @@ export class UserFormComponent {
     }
   }
 
+  submit(): void {
+    this.submitted = true;
+    if (this.form.valid) {
+      if (this.form.controls.id.value) {
+        this.formUpdate.emit(this.prepareUser(this.form.controls.id.value));
+      } else {
+        this.formCreate.emit(this.prepareUser());
+      }
+      this.form.reset();
+    }
+  }
 
   private prepareUser(id?: number): User {
     return {
