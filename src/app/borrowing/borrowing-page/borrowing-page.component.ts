@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Borrowing} from "../../common/model/borrowing.model";
 import { BorrowingService} from "../../common/service/borrowing.service";
+import {ToastService} from "angular-toastify";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-borrowing-page',
@@ -14,7 +16,7 @@ export class BorrowingPageComponent {
   @Output()
   borrowingToUpdate = new EventEmitter<number>();
 
-  constructor(private borrowingService: BorrowingService) {
+  constructor(private borrowingService: BorrowingService, private toastService: ToastService, private router: Router) {
     this.getBorrowings();
   }
 
@@ -24,29 +26,8 @@ export class BorrowingPageComponent {
     });
   }
 
-  createBorrowing(borrowing: Borrowing): void {
-    this.borrowingService.createBorrowing(borrowing)
-      .subscribe(() => {
-        console.log('Pôžička bola úspešne vytvorená.');
-        this.getBorrowings();
-      });
-  }
-
-  updateBorrowing(borrowing: Borrowing): void {
-    this.borrowingService.updateBorrowing(borrowing)
-      .subscribe(() => {
-        console.log('Pôžička bola úspešne upravená.');
-        this.getBorrowings();
-      });
-    this.borrowing = undefined;
-  }
-
   selectBorrowingToUpdate(borrowingId: number): void {
-    this.borrowingService.getBorrowing(borrowingId)
-      .subscribe((borrowing: Borrowing) => {
-        this.borrowing = borrowing;
-        this.borrowingToUpdate.emit(borrowing.id);
-      });
+    this.router.navigate(['borrowing', borrowingId]);
   }
 
   deleteBorrowing(borrowingId: number): void {

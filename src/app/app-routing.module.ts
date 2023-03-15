@@ -4,6 +4,7 @@ import {BorrowingPageComponent} from "./borrowing/borrowing-page/borrowing-page.
 import {UserPageComponent} from './user/user-page/user-page.component';
 import {BookPageComponent} from "./book/book-page/book-page.component";
 import {UserDetailPageComponent} from "./user/user-detail-page/user-detail-page.component";
+import {BorrowingDetailPageComponent} from "./borrowing/borrowing-detail-page/borrowing-detail-page.component";
 
 const routes: Routes = [
   {
@@ -16,11 +17,15 @@ const routes: Routes = [
   },
   {
     path: "book",
-    component: BookPageComponent,
+    component: BookPageComponent
   },
   {
     path: "borrowing",
     component: BorrowingPageComponent
+  },
+  {
+    path: "borrowing/:borrowingId",
+    component: BorrowingDetailPageComponent
   }
 ]
 
