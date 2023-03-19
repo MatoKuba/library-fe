@@ -1,7 +1,11 @@
 export interface Book {
   id: number;
   name: string;
-  author: string;
+  authorFirstName: string;
+  authorLastName: string;
+  isbn : string;
+
+  count : number;
   available: boolean;
 }
 
