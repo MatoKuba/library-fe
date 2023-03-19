@@ -1,18 +1,21 @@
-<form [formGroup]="form" (submit)="savePerson()">
-  <label>Meno:
-    <input type="text" formControlName="firstName" [class.invalid-input]="form.controls.firstName.invalid" />
-  </label>
-  <p *ngIf="form.controls.firstName.invalid" class="invalid-text">
-    <span *ngIf="form.controls.firstName.errors?.required">Zadajte meno</span>
-  </p>
+<h2>USER</h2>
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <div class="form-group">
+    <label for="firstName">Meno:</label>
+    <input id="firstName" type="text" formControlName="firstName" [ngClass]="{'invalid-input': form.controls.firstName.invalid && submitted}" />
+    <p *ngIf="form.controls.firstName.invalid && submitted" class="invalid-text">
+      Zadajte meno
+    </p>
+  </div>
 
-  <label>Priezvisko:
-    <input type="text" formControlName="lastName" [class.invalid-input]="form.controls.lastName.invalid" />
-  </label>
-  <p *ngIf="form.controls.lastName.invalid" class="invalid-text">
-    <span *ngIf="form.controls.lastName.errors?.required">Zadajte priezvisko</span>
-    <span *ngIf="form.controls.lastName.errors?.minlength">Minimálna dĺžka priezviska sú 3 znaky</span>
-  </p>
+  <div class="form-group">
+    <label for="lastName">Priezvisko:</label>
+    <input id="lastName" type="text" formControlName="lastName" [ngClass]="{'invalid-input': form.controls.lastName.invalid && submitted}" />
+    <p *ngIf="form.controls.lastName.invalid && submitted" class="invalid-text">
+      <span *ngIf="form.controls.lastName.errors?.required">Zadajte priezvisko</span>
+      <span *ngIf="form.controls.lastName.errors?.minlength">Minimálna dĺžka priezviska sú 3 znaky</span>
+    </p>
+  </div>
 
   <button type="submit" [disabled]="form.invalid">Uložiť</button>
   <button type="reset">Zrušiť</button>

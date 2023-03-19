@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Output, Input} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Book} from '../../common/model/book.model';
+import {findLastMappingIndexBefore} from "@angular/compiler-cli/src/ngtsc/sourcemaps/src/source_file";
 
 
 @Component({
@@ -11,6 +12,7 @@ import {Book} from '../../common/model/book.model';
 export class BookFormComponent {
 
   form: FormGroup;
+  submitted = false;
 
   @Input()
   set bookData(book: Book | undefined) {
@@ -46,7 +48,17 @@ export class BookFormComponent {
       available: new FormControl(null)
     })
   }
-
+  submit(): void {
+    this.submitted = true;
+    if (this.form.valid) {
+      if (this.form.controls.id.value) {
+        this.formUpdate.emit(this.prepareBook(this.form.controls.id.value));
+      } else {
+        this.formCreate.emit(this.prepareBook());
+      }
+      this.form.reset();
+    }
+  }
   private prepareBook(id?: number): Book {
     return {
       id: id !== undefined ? id : Date.now(),
